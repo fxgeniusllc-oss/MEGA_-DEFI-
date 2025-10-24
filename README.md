@@ -38,13 +38,31 @@ The MEGA DeFi Profit Machine is a sophisticated algorithmic trading system that 
 
 ### Installation
 
+#### Option 1: Install from PyPI (Recommended)
+```bash
+pip install mega-defi
+```
+
+#### Option 2: Install from Source
 ```bash
 # Clone the repository
 git clone https://github.com/fxgeniusllc-oss/MEGA_-DEFI-.git
 cd MEGA_-DEFI-
 
-# No dependencies required - pure Python implementation
+# Install in editable mode (for development)
+pip install -e .
+
+# Or install normally
+pip install .
 ```
+
+#### Option 3: Install with Development Tools
+```bash
+# Install with development dependencies (pytest, black, flake8, mypy)
+pip install -e ".[dev]"
+```
+
+**Note:** No external runtime dependencies required - pure Python implementation!
 
 ### Basic Usage
 

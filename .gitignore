@@ -23,6 +23,15 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# Package build artifacts
+*.whl
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.tox/
+*.log
+
 # Virtual environments
 venv/
 env/

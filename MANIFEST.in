@@ -1,0 +1,22 @@
+# Include essential documentation files
+include README.md
+include LICENSE
+include pyproject.toml
+
+# Include all Python files
+recursive-include mega_defi *.py
+
+# Include type hints if present
+recursive-include mega_defi py.typed
+
+# Exclude test files from distribution
+recursive-exclude tests *
+recursive-exclude examples *
+
+# Exclude development and build files
+exclude .gitignore
+exclude .git*
+global-exclude __pycache__
+global-exclude *.py[co]
+global-exclude *.so
+global-exclude .DS_Store
