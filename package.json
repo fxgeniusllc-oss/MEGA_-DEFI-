@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:rs": "set RUSTFLAGS=-C target-cpu=native -C target-feature=+avx2,+fma && cargo build --release -p omni_engine_core",
-    "run:rs": "cargo run --release -p omni_engine_core",
-    "bench:rs": "cargo bench -p omni_engine_core",
+    "build:rs": "set RUSTFLAGS=-C target-cpu=native -C target-feature=+avx2,+fma && cargo build --release -p apex_core",
+    "run:rs": "cargo run --release -p apex_core",
+    "bench:rs": "cargo bench -p benches",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/main.js",
     "dev": "ts-node src/main.ts",
