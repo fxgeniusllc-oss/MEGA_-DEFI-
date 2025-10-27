@@ -25,6 +25,8 @@ Combines ALL advanced trading strategies into one unstoppable profit engine
 
 **Get started in under 5 minutes!**
 
+> 📖 **New to the system?** See our [**Comprehensive Installation Guide**](INSTALLATION_GUIDE.md) for detailed step-by-step instructions with virtual environment setup!
+
 ```bash
 # 1. Clone the repository
 git clone https://github.com/fxgeniusllc-oss/MEGA_-DEFI-.git
@@ -53,6 +55,7 @@ cargo build --release
 ```
 
 📖 **Detailed Guides:**
+- 📖 [**INSTALLATION_GUIDE.md**](INSTALLATION_GUIDE.md) - **NEW!** Complete step-by-step installation guide with venv
 - 🎯 [**QUICKSTART.md**](QUICKSTART.md) - Complete download & install guide (5 minutes)
 - 📦 [Installation Guide](INSTALL.md) - Advanced installation options
 - 🧪 [Testing Guide](TESTING.md) - How to run tests
