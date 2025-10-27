@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:rs": "set RUSTFLAGS=-C target-cpu=native -C target-feature=+avx2,+fma && cargo build --release -p apex_core",
+    "build:rs": "cargo build --release -p apex_core",
+    "build:rs:optimized": "cross-env RUSTFLAGS=\"-C target-cpu=native -C target-feature=+avx2,+fma\" cargo build --release -p apex_core",
     "run:rs": "cargo run --release -p apex_core",
     "bench:rs": "cargo bench -p benches",
     "build": "tsc -p tsconfig.json",
@@ -26,7 +27,8 @@
     "@types/node": "^24.9.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "cross-env": "^7.0.3"
   },
   "engines": {
     "node": ">=20.0.0",
