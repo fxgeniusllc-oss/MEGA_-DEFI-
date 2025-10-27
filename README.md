@@ -25,6 +25,30 @@ Combines ALL advanced trading strategies into one unstoppable profit engine
 
 **Get started in under 5 minutes!**
 
+### 🎬 Option 1: Automated Deployment (Recommended)
+
+**Run the comprehensive system launch script for automated setup:**
+
+```bash
+# For Windows:
+system_launch.bat
+
+# For Linux/macOS:
+chmod +x system_launch.sh
+./system_launch.sh
+```
+
+🔥 **The script automatically:**
+- ✅ Verifies all system requirements
+- ✅ Installs Python package and dependencies
+- ✅ Builds TypeScript and Rust components
+- ✅ Runs complete test suite
+- ✅ Validates system health
+- ✅ Demonstrates functionality
+- ✅ Provides detailed status report
+
+### 📋 Option 2: Manual Installation
+
 ```bash
 # 1. Clone the repository
 git clone https://github.com/fxgeniusllc-oss/MEGA_-DEFI-.git
@@ -53,6 +77,7 @@ cargo build --release
 ```
 
 📖 **Detailed Guides:**
+- 🚀 [**DEPLOYMENT_GUIDE.md**](DEPLOYMENT_GUIDE.md) - Automated deployment system
 - 🎯 [**QUICKSTART.md**](QUICKSTART.md) - Complete download & install guide (5 minutes)
 - 📦 [Installation Guide](INSTALL.md) - Advanced installation options
 - 🧪 [Testing Guide](TESTING.md) - How to run tests
