@@ -78,6 +78,7 @@ yarn-debug.log*
 yarn-error.log*
 .yarn/
 .pnp.*
+package-lock.json
 
 # Rust
 target/
