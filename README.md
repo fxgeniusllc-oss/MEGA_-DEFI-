@@ -105,6 +105,69 @@ python3 examples/basic_usage.py
 python3 examples/advanced_simulation.py
 ```
 
+## 🔧 Building with Yarn and Rust
+
+This project includes both TypeScript/Node.js components and high-performance Rust engines.
+
+### Prerequisites
+
+- Node.js >= 20.0.0
+- Yarn >= 1.22.0
+- Rust (latest stable)
+
+### TypeScript/Node.js Build
+
+```bash
+# Install dependencies
+yarn install
+
+# Build TypeScript
+yarn build
+
+# Build Rust engines
+yarn build:rs
+
+# Build everything (TypeScript + Rust)
+yarn build:all
+
+# Run development server
+yarn dev
+
+# Run opportunity detector simulation
+yarn simulate
+
+# Start production server
+yarn start
+```
+
+### Rust Engines Build
+
+```bash
+# Check all workspace members
+cargo check
+
+# Build in debug mode
+cargo build
+
+# Build in release mode (optimized)
+cargo build --release
+
+# Run benchmarks
+cargo bench -p benches
+
+# Run a specific engine
+cargo run --release -p apex_core
+```
+
+### Quad Rust Engines
+
+The system includes four high-performance Rust engines:
+
+1. **executor** - Transaction execution and order management
+2. **math_engine** - Advanced mathematical computations
+3. **telemetry** - System monitoring and metrics collection
+4. **tx_engine** - Blockchain transaction processing
+
 ## 📖 Architecture
 
 The system is built on four core components:

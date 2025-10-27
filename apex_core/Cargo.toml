@@ -17,3 +17,7 @@ dotenvy.workspace = true
 uuid.workspace = true
 tracing.workspace = true
 tracing-subscriber.workspace = true
+executor = { path = "../engines/executor" }
+math_engine = { path = "../engines/math_engine" }
+telemetry = { path = "../engines/telemetry" }
+tx_engine = { path = "../engines/tx_engine" }
