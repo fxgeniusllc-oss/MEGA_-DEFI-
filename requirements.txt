@@ -1,0 +1,13 @@
+# MEGA DeFi Profit Machine - Python Dependencies
+# ================================================
+#
+# This package has ZERO runtime dependencies - it's pure Python!
+# 
+# However, for development and testing, you may want:
+
+# Development Dependencies (optional)
+# Install with: pip install -r requirements-dev.txt
+# or: pip install -e ".[dev]"
+
+# Note: The core package works without any external dependencies.
+# This is intentional to maximize compatibility and minimize complexity.
