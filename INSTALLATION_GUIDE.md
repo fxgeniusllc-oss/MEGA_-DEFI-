@@ -48,22 +48,29 @@ The core system requires Python 3.8+. Python 3.12 is recommended.
 # Update package list
 sudo apt update
 
-# Install Python 3.12 and pip
-sudo apt install python3.12 python3.12-venv python3-pip -y
+# Install Python 3 and venv (will install latest available Python 3.x)
+sudo apt install python3 python3-venv python3-pip -y
+
+# For Python 3.12 specifically (optional, recommended):
+# sudo apt install python3.12 python3.12-venv -y
 
 # Verify installation
 python3 --version
-# Should output: Python 3.12.x or 3.8+
+# Should output: Python 3.8 or higher (Python 3.12 recommended)
 ```
 
 #### **On macOS:**
 ```bash
 # Using Homebrew (install Homebrew first from https://brew.sh if needed)
-brew install python@3.12
+# Install latest Python 3 (will be 3.12 or newer)
+brew install python3
+
+# Or install specific version (optional):
+# brew install python@3.12
 
 # Verify installation
 python3 --version
-# Should output: Python 3.12.x or 3.8+
+# Should output: Python 3.8 or higher (Python 3.12 recommended)
 ```
 
 #### **On Windows:**
@@ -960,9 +967,10 @@ except ImportError as e:
 
 # Check package installation
 try:
-    import pkg_resources
-    version = pkg_resources.get_distribution("mega-defi").version
-    print(f"✅ Package Version: {version}")
+    # Use importlib.metadata for Python 3.8+
+    from importlib.metadata import version
+    pkg_version = version("mega-defi")
+    print(f"✅ Package Version: {pkg_version}")
 except Exception:
     print("⚠️  Package Version: Could not determine")
 
