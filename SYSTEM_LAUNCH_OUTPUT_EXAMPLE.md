@@ -44,7 +44,7 @@ This document shows the expected terminal output from running the system launch 
 
 [INSTALL] Installing MEGA DeFi Python package in editable mode...
 
-Obtaining file:///path/to/MEGA_-DEFI-
+Obtaining file:///home/user/MEGA_-DEFI-
   Installing build dependencies: started
   Installing build dependencies: finished with status 'done'
   Checking if build backend supports build_editable: started
