@@ -68,3 +68,19 @@ Thumbs.db
 tmp/
 temp/
 *.tmp
+
+# Node.js / TypeScript
+node_modules/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.yarn/
+.pnp.*
+
+# Rust
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb

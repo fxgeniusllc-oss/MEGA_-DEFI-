@@ -1,0 +1,34 @@
+# ======================================================
+# 🧠 APEX SuperSonic Core Workspace Manifest
+# ======================================================
+
+[workspace]
+members = [
+    "apex_core",
+    "engines/executor",
+    "engines/math_engine",
+    "engines/telemetry",
+    "engines/tx_engine",
+    "engines/benches"
+]
+
+resolver = "2"
+
+[workspace.package]
+version = "1.0.0"
+edition = "2021"
+license = "MIT"
+authors = ["The Urban Genius <urban.genius@apexcascade.ai>"]
+description = "APEX Cascade SuperSonic Core — Unified Quant MEV Execution Ecosystem"
+repository = "https://github.com/MavenSource/APEX-SuperSonic-Core"
+
+[workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.40", features = ["full"] }
+anyhow = "1.0"
+thiserror = "1.0"
+dotenvy = "0.15"
+uuid = { version = "1.4", features = ["v4"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
