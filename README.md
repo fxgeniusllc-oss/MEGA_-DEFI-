@@ -25,7 +25,29 @@ Combines ALL advanced trading strategies into one unstoppable profit engine
 
 **Get started in under 5 minutes!**
 
-> 📖 **New to the system?** See our [**Comprehensive Installation Guide**](INSTALLATION_GUIDE.md) for detailed step-by-step instructions with virtual environment setup!
+### 🎬 Option 1: Automated Deployment (Recommended)
+
+**Run the comprehensive system launch script for automated setup:**
+
+```bash
+# For Windows:
+system_launch.bat
+
+# For Linux/macOS:
+chmod +x system_launch.sh
+./system_launch.sh
+```
+
+🔥 **The script automatically:**
+- ✅ Verifies all system requirements
+- ✅ Installs Python package and dependencies
+- ✅ Builds TypeScript and Rust components
+- ✅ Runs complete test suite
+- ✅ Validates system health
+- ✅ Demonstrates functionality
+- ✅ Provides detailed status report
+
+### 📋 Option 2: Manual Installation
 
 ```bash
 # 1. Clone the repository
@@ -55,7 +77,7 @@ cargo build --release
 ```
 
 📖 **Detailed Guides:**
-- 📖 [**INSTALLATION_GUIDE.md**](INSTALLATION_GUIDE.md) - **NEW!** Complete step-by-step installation guide with venv
+- 🚀 [**DEPLOYMENT_GUIDE.md**](DEPLOYMENT_GUIDE.md) - Automated deployment system
 - 🎯 [**QUICKSTART.md**](QUICKSTART.md) - Complete download & install guide (5 minutes)
 - 📦 [Installation Guide](INSTALL.md) - Advanced installation options
 - 🧪 [Testing Guide](TESTING.md) - How to run tests
