@@ -4,11 +4,10 @@ Environment Configuration Demo
 ==============================
 
 Demonstrates how the MEGA DeFi system loads and uses environment variables.
-"""
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+Note: This example assumes the package is installed with 'pip install -e .'
+If you haven't installed the package yet, run: pip install -e .
+"""
 
 from mega_defi.config import Config
 from mega_defi.profit_machine import create_profit_machine
