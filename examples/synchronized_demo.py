@@ -23,6 +23,9 @@ from mega_defi.strategies import (
     StrategyRegistry,
 )
 
+# Default capital for demonstration
+DEFAULT_DEMO_CAPITAL = 100000  # $100,000
+
 
 def main():
     """Demonstrate synchronized strategy activation."""
@@ -33,7 +36,7 @@ def main():
     print("For complete implementation, see: STRATEGY_USAGE_GUIDE.md\n")
     
     # Step 1: Define capital allocation
-    TOTAL_CAPITAL = 100000  # $100,000
+    TOTAL_CAPITAL = DEFAULT_DEMO_CAPITAL
     
     capital_allocation = {
         'flash_loan': 0.20,      # 20% = $20,000
@@ -126,7 +129,7 @@ def main():
     
     print(f"\n✅ All {len(strategies)} strategies initialized and ready!")
     print(f"💰 Total capital allocated: ${TOTAL_CAPITAL:,}")
-    print(f"📊 Strategy registry active with {len(registry)} strategies")
+    print(f"📊 Strategy registry active with {len(registry.get_all_strategies())} strategies")
     
     # Step 4: Show global rankings
     print(f"\n{'='*80}")
@@ -150,7 +153,7 @@ def main():
     print("\n📝 SIMULATING MARKET ANALYSIS...\n")
     
     # Simulate analysis for each strategy
-    for name, strategy in strategies.items():
+    for strategy in strategies.values():
         print(f"   Analyzing {strategy.name}...")
         # In real deployment, you would pass actual market data
         # analysis = strategy.analyze(real_market_data)
