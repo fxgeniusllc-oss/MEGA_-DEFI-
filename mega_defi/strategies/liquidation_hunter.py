@@ -8,6 +8,7 @@ Targets 10-100% profit per liquidation with minimal risk.
 
 from typing import Dict, Any, List
 from .base_strategy import BaseStrategy
+from ..config import Config
 import logging
 
 logger = logging.getLogger(__name__)
@@ -25,25 +26,40 @@ class LiquidationHunterStrategy(BaseStrategy):
     """
     
     def __init__(self,
-                 min_health_factor: float = 1.05,
-                 min_liquidation_profit: float = 0.02,
-                 max_gas_price: float = 200):
+                 min_health_factor: float = None,
+                 min_liquidation_profit: float = None,
+                 max_gas_price: float = None):
         """
         Initialize Liquidation Hunter Strategy.
         
         Args:
-            min_health_factor: Minimum health factor to monitor (default 1.05)
-            min_liquidation_profit: Minimum profit threshold (default 2%)
-            max_gas_price: Maximum gas price in gwei
+            min_health_factor: Minimum health factor to monitor (defaults to config)
+            min_liquidation_profit: Minimum profit threshold (defaults to config)
+            max_gas_price: Maximum gas price in gwei (defaults to config)
         """
         super().__init__(
             name="Liquidation Hunter",
             description="Elite liquidation hunting strategy"
         )
         
-        self.min_health_factor = min_health_factor
-        self.min_liquidation_profit = min_liquidation_profit
-        self.max_gas_price = max_gas_price
+        # Load from config if not provided
+        self.min_health_factor = (
+            min_health_factor if min_health_factor is not None 
+            else Config.get_liquidation_min_health_factor()
+        )
+        self.min_liquidation_profit = (
+            min_liquidation_profit if min_liquidation_profit is not None 
+            else Config.get_liquidation_min_profit()
+        )
+        self.max_gas_price = (
+            max_gas_price if max_gas_price is not None 
+            else Config.get_max_gas_price_gwei()
+        )
+        
+        logger.info(f"Liquidation Hunter initialized with config: "
+                   f"min_health_factor={self.min_health_factor:.2f}, "
+                   f"min_profit={self.min_liquidation_profit*100:.2f}%, "
+                   f"max_gas={self.max_gas_price} gwei")
         
         self.positions_monitored = 0
         self.liquidations_executed = 0

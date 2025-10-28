@@ -11,9 +11,12 @@ from .core.strategy_engine import StrategyEngine, StrategyType, Signal
 from .core.market_analyzer import MarketAnalyzer
 from .core.risk_manager import RiskManager
 from .core.profit_optimizer import ProfitOptimizer
+from .config import Config
 
+# Configure logging from environment variables
+log_level = getattr(logging, Config.get_log_level(), logging.INFO)
 logging.basicConfig(
-    level=logging.INFO,
+    level=log_level,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
@@ -31,20 +34,33 @@ class ProfitMachine:
     """
     
     def __init__(self, 
-                 portfolio_value: float = 10000,
-                 max_risk_per_trade: float = 0.02,
-                 max_position_size: float = 0.1):
+                 portfolio_value: Optional[float] = None,
+                 max_risk_per_trade: Optional[float] = None,
+                 max_position_size: Optional[float] = None):
         """
         Initialize the Profit Machine.
         
         Args:
-            portfolio_value: Starting portfolio value in USD
-            max_risk_per_trade: Maximum risk per trade (default 2%)
-            max_position_size: Maximum position size (default 10%)
+            portfolio_value: Starting portfolio value in USD (defaults to config)
+            max_risk_per_trade: Maximum risk per trade (defaults to config)
+            max_position_size: Maximum position size (defaults to config)
         """
         logger.info("=" * 60)
         logger.info("INITIALIZING MEGA DEFI PROFIT MACHINE")
         logger.info("=" * 60)
+        
+        # Load configuration from environment variables if not provided
+        if portfolio_value is None:
+            portfolio_value = Config.get_initial_portfolio_value()
+        if max_risk_per_trade is None:
+            max_risk_per_trade = Config.get_max_risk_per_trade()
+        if max_position_size is None:
+            max_position_size = Config.get_max_position_size()
+        
+        logger.info(f"Configuration loaded from environment")
+        logger.info(f"Environment: {Config.get_environment()}")
+        logger.info(f"Debug Mode: {Config.get_debug_mode()}")
+        logger.info(f"Dry Run: {Config.get_dry_run()}")
         
         self.strategy_engine = StrategyEngine()
         self.market_analyzer = MarketAnalyzer()
@@ -57,6 +73,8 @@ class ProfitMachine:
         self._register_default_strategies()
         
         logger.info(f"Portfolio Value: ${portfolio_value:,.2f}")
+        logger.info(f"Max Risk Per Trade: {max_risk_per_trade*100:.1f}%")
+        logger.info(f"Max Position Size: {max_position_size*100:.1f}%")
         logger.info("Profit Machine Ready - UNSTOPPABLE MODE ACTIVATED")
         logger.info("=" * 60)
     

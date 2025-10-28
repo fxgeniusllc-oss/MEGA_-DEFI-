@@ -2,14 +2,27 @@
  * Opportunity Detector - Identifies profitable trading opportunities
  */
 
+import { Config } from '../config.js';
+
 export class OpportunityDetector {
     private initialized: boolean = false;
+    private rpcUrls: Record<string, string>;
+    private minProfit: number;
+    private maxGasCost: number;
+
+    constructor() {
+        // Load configuration from environment variables
+        this.rpcUrls = Config.getAllRpcUrls();
+        this.minProfit = Config.getArbitrageMinProfit();
+        this.maxGasCost = Config.getArbitrageMaxGasCost();
+    }
 
     /**
      * Initialize the opportunity detector
      */
     async initialize(): Promise<void> {
         console.log('📊 Initializing Opportunity Detector...');
+        console.log(`Configuration: Min Profit=${this.minProfit * 100}%, Max Gas=${this.maxGasCost}`);
         
         // Simulate initialization
         await this.setupMarketConnections();
@@ -24,6 +37,11 @@ export class OpportunityDetector {
      */
     private async setupMarketConnections(): Promise<void> {
         console.log('🔌 Setting up market connections...');
+        console.log(`  - Ethereum RPC: ${this.rpcUrls.ethereum}`);
+        console.log(`  - BSC RPC: ${this.rpcUrls.bsc}`);
+        console.log(`  - Polygon RPC: ${this.rpcUrls.polygon}`);
+        console.log(`  - Arbitrum RPC: ${this.rpcUrls.arbitrum}`);
+        console.log(`  - Optimism RPC: ${this.rpcUrls.optimism}`);
         // Placeholder for market connection setup
         await new Promise(resolve => setTimeout(resolve, 100));
     }
@@ -33,6 +51,9 @@ export class OpportunityDetector {
      */
     private async loadStrategies(): Promise<void> {
         console.log('📈 Loading trading strategies...');
+        console.log(`  - Flash Loan Min Profit: ${Config.getFlashLoanMinProfit() * 100}%`);
+        console.log(`  - MEV Min Transaction: $${Config.getMevMinTransactionSize()}`);
+        console.log(`  - Max Slippage: ${Config.getMaxSlippage() * 100}%`);
         // Placeholder for strategy loading
         await new Promise(resolve => setTimeout(resolve, 100));
     }

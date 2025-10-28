@@ -8,6 +8,7 @@ Targets 20-80% APY with low-risk statistical edge.
 
 from typing import Dict, Any, List
 from .base_strategy import BaseStrategy
+from ..config import Config
 import logging
 
 logger = logging.getLogger(__name__)
