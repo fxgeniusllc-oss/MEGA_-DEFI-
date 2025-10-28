@@ -8,6 +8,7 @@ Targets 5-200% profit per transaction with minimal risk.
 
 from typing import Dict, Any, List
 from .base_strategy import BaseStrategy
+from ..config import Config
 import logging
 
 logger = logging.getLogger(__name__)
@@ -25,25 +26,40 @@ class MEVStrategy(BaseStrategy):
     """
     
     def __init__(self,
-                 min_transaction_size: float = 10000,
-                 min_expected_profit: float = 0.01,
-                 max_slippage_impact: float = 0.05):
+                 min_transaction_size: float = None,
+                 min_expected_profit: float = None,
+                 max_slippage_impact: float = None):
         """
         Initialize MEV Strategy.
         
         Args:
-            min_transaction_size: Minimum transaction size to target (USD)
-            min_expected_profit: Minimum expected profit percentage
-            max_slippage_impact: Maximum slippage impact we can cause
+            min_transaction_size: Minimum transaction size to target in USD (defaults to config)
+            min_expected_profit: Minimum expected profit percentage (defaults to config)
+            max_slippage_impact: Maximum slippage impact we can cause (defaults to config)
         """
         super().__init__(
             name="MEV Strategy",
             description="Elite MEV extraction and sandwich attack strategy"
         )
         
-        self.min_transaction_size = min_transaction_size
-        self.min_expected_profit = min_expected_profit
-        self.max_slippage_impact = max_slippage_impact
+        # Load from config if not provided
+        self.min_transaction_size = (
+            min_transaction_size if min_transaction_size is not None 
+            else Config.get_mev_min_transaction_size()
+        )
+        self.min_expected_profit = (
+            min_expected_profit if min_expected_profit is not None 
+            else Config.get_mev_min_expected_profit()
+        )
+        self.max_slippage_impact = (
+            max_slippage_impact if max_slippage_impact is not None 
+            else Config.get_max_slippage()
+        )
+        
+        logger.info(f"MEV Strategy initialized with config: "
+                   f"min_tx_size=${self.min_transaction_size:,.0f}, "
+                   f"min_profit={self.min_expected_profit*100:.2f}%, "
+                   f"max_slippage={self.max_slippage_impact*100:.2f}%")
         
         self.mev_opportunities_detected = 0
         self.sandwich_attacks_executed = 0

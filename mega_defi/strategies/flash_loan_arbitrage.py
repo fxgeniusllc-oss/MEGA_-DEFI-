@@ -8,6 +8,7 @@ Targets 5-50% profit per trade with zero capital requirements.
 
 from typing import Dict, Any, List
 from .base_strategy import BaseStrategy
+from ..config import Config
 import logging
 
 logger = logging.getLogger(__name__)
@@ -25,25 +26,40 @@ class FlashLoanArbitrageStrategy(BaseStrategy):
     """
     
     def __init__(self, 
-                 min_profit_threshold: float = 0.005,
-                 max_gas_cost: float = 500,
-                 min_liquidity: float = 10000):
+                 min_profit_threshold: float = None,
+                 max_gas_cost: float = None,
+                 min_liquidity: float = None):
         """
         Initialize Flash Loan Arbitrage Strategy.
         
         Args:
-            min_profit_threshold: Minimum profit threshold (default 0.5%)
-            max_gas_cost: Maximum acceptable gas cost in USD
-            min_liquidity: Minimum liquidity requirement in USD
+            min_profit_threshold: Minimum profit threshold (defaults to config)
+            max_gas_cost: Maximum acceptable gas cost in USD (defaults to config)
+            min_liquidity: Minimum liquidity requirement in USD (defaults to config)
         """
         super().__init__(
             name="Flash Loan Arbitrage",
             description="Elite flash loan arbitrage with TAR scoring"
         )
         
-        self.min_profit_threshold = min_profit_threshold
-        self.max_gas_cost = max_gas_cost
-        self.min_liquidity = min_liquidity
+        # Load from config if not provided
+        self.min_profit_threshold = (
+            min_profit_threshold if min_profit_threshold is not None 
+            else Config.get_flash_loan_min_profit()
+        )
+        self.max_gas_cost = (
+            max_gas_cost if max_gas_cost is not None 
+            else Config.get_arbitrage_max_gas_cost()
+        )
+        self.min_liquidity = (
+            min_liquidity if min_liquidity is not None 
+            else Config.get_arbitrage_min_liquidity()
+        )
+        
+        logger.info(f"Flash Loan Arbitrage initialized with config: "
+                   f"min_profit={self.min_profit_threshold*100:.2f}%, "
+                   f"max_gas=${self.max_gas_cost}, "
+                   f"min_liquidity=${self.min_liquidity:,.0f}")
         
         # Strategy-specific tracking
         self.opportunities_found = 0

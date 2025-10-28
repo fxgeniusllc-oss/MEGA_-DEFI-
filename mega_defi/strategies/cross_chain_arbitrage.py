@@ -8,6 +8,7 @@ Targets 3-15% profit per trade with cross-chain bridge opportunities.
 
 from typing import Dict, Any, List
 from .base_strategy import BaseStrategy
+from ..config import Config
 import logging
 
 logger = logging.getLogger(__name__)
@@ -25,15 +26,15 @@ class CrossChainArbitrageStrategy(BaseStrategy):
     """
     
     def __init__(self,
-                 min_profit_after_fees: float = 0.03,
-                 max_bridge_time: int = 600,
+                 min_profit_after_fees: float = None,
+                 max_bridge_time: int = None,
                  supported_chains: List[str] = None):
         """
         Initialize Cross-Chain Arbitrage Strategy.
         
         Args:
-            min_profit_after_fees: Minimum profit after all fees (default 3%)
-            max_bridge_time: Maximum acceptable bridge time in seconds
+            min_profit_after_fees: Minimum profit after all fees (defaults to config)
+            max_bridge_time: Maximum acceptable bridge time in seconds (defaults to config)
             supported_chains: List of supported blockchain networks
         """
         super().__init__(
@@ -41,11 +42,22 @@ class CrossChainArbitrageStrategy(BaseStrategy):
             description="Advanced multi-chain arbitrage strategy"
         )
         
-        self.min_profit_after_fees = min_profit_after_fees
-        self.max_bridge_time = max_bridge_time
+        # Load from config if not provided
+        self.min_profit_after_fees = (
+            min_profit_after_fees if min_profit_after_fees is not None 
+            else Config.get_cross_chain_min_profit()
+        )
+        self.max_bridge_time = (
+            max_bridge_time if max_bridge_time is not None 
+            else Config.get_cross_chain_max_bridge_time()
+        )
         self.supported_chains = supported_chains or [
             'Ethereum', 'BSC', 'Polygon', 'Arbitrum', 'Optimism', 'Avalanche'
         ]
+        
+        logger.info(f"Cross-Chain Arbitrage initialized with config: "
+                   f"min_profit={self.min_profit_after_fees*100:.2f}%, "
+                   f"max_bridge_time={self.max_bridge_time}s")
         
         # Bridge fee estimates (percentage)
         self.bridge_fees = {

@@ -8,6 +8,7 @@ Targets 30-150% APY by dynamically allocating capital to highest-yield opportuni
 
 from typing import Dict, Any, List
 from .base_strategy import BaseStrategy
+from ..config import Config
 import logging
 
 logger = logging.getLogger(__name__)

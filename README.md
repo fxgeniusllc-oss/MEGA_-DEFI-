@@ -54,14 +54,19 @@ chmod +x system_launch.sh
 git clone https://github.com/fxgeniusllc-oss/MEGA_-DEFI-.git
 cd MEGA_-DEFI-
 
-# 2. Install Python package
+# 2. (Optional) Configure environment variables
+cp .env.example .env
+# Edit .env with your settings (API keys, RPC URLs, etc.)
+
+# 3. Install Python package
 pip install -e .
 
-# 3. Run tests to verify installation
+# 4. Run tests to verify installation
 python3 -m unittest discover tests/
 
-# 4. Try the example
+# 5. Try the examples
 python3 examples/basic_usage.py
+python3 examples/env_config_demo.py
 ```
 
 ✅ **That's it! The system is ready to use.**
@@ -78,6 +83,7 @@ cargo build --release
 
 📖 **Detailed Guides:**
 - 🚀 [**DEPLOYMENT_GUIDE.md**](DEPLOYMENT_GUIDE.md) - Automated deployment system
+- ⚙️ [**ENV_CONFIG_GUIDE.md**](ENV_CONFIG_GUIDE.md) - Environment configuration guide
 - 🎯 [**QUICKSTART.md**](QUICKSTART.md) - Complete download & install guide (5 minutes)
 - 📚 [**STRATEGY_USAGE_GUIDE.md**](STRATEGY_USAGE_GUIDE.md) - **Step-by-step guide to use strategies and activate all in sync**
 - 📦 [Installation Guide](INSTALL.md) - Advanced installation options
