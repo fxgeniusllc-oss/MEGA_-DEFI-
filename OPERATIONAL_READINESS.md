@@ -326,6 +326,7 @@ These are **configuration and infrastructure** requirements, not code completene
 
 ### Documentation
 - 📖 README.md - System overview
+- 🎯 STRATEGY_USAGE_GUIDE.md - **Step-by-step guide to use and activate all strategies in sync**
 - 📋 TESTING.md - Testing guide
 - 🧪 TEST_REPORT.md - Detailed test results
 - 📦 INSTALL.md - Installation instructions

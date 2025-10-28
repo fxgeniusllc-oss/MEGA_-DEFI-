@@ -269,10 +269,11 @@ python3 examples/basic_usage.py
 
 Once everything is installed:
 
-1. **Read OPERATIONAL_READINESS.md** to understand all system capabilities
-2. **Explore examples/** directory for more usage patterns
-3. **Check TESTING.md** to learn about the test suite
-4. **Review INSTALL.md** for advanced installation options
+1. **Read STRATEGY_USAGE_GUIDE.md** to learn how to use strategies and activate them all in sync
+2. **Read OPERATIONAL_READINESS.md** to understand all system capabilities
+3. **Explore examples/** directory for more usage patterns (especially `synchronized_demo.py`)
+4. **Check TESTING.md** to learn about the test suite
+5. **Review INSTALL.md** for advanced installation options
 
 ---
 

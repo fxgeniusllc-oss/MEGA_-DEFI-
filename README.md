@@ -79,6 +79,7 @@ cargo build --release
 📖 **Detailed Guides:**
 - 🚀 [**DEPLOYMENT_GUIDE.md**](DEPLOYMENT_GUIDE.md) - Automated deployment system
 - 🎯 [**QUICKSTART.md**](QUICKSTART.md) - Complete download & install guide (5 minutes)
+- 📚 [**STRATEGY_USAGE_GUIDE.md**](STRATEGY_USAGE_GUIDE.md) - **Step-by-step guide to use strategies and activate all in sync**
 - 📦 [Installation Guide](INSTALL.md) - Advanced installation options
 - 🧪 [Testing Guide](TESTING.md) - How to run tests
 - 🚀 [Operational Readiness](OPERATIONAL_READINESS.md) - System capabilities
