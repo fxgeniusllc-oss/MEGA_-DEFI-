@@ -17,8 +17,6 @@ Tests cover:
 import unittest
 import importlib
 import inspect
-import sys
-from typing import List, Type
 
 
 class TestMainPackageExports(unittest.TestCase):
