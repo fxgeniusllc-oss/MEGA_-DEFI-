@@ -431,6 +431,11 @@ class Config:
     # ============================================
     
     @staticmethod
+    def get_rpc_url() -> str:
+        """Get primary RPC URL (Ethereum by default)."""
+        return Config.get_ethereum_rpc_url()
+    
+    @staticmethod
     def get_all_rpc_urls() -> Dict[str, str]:
         """Get all configured RPC URLs."""
         return {
