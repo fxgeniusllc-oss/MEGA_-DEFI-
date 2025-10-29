@@ -36,7 +36,9 @@ class ProfitMachine:
     def __init__(self, 
                  portfolio_value: Optional[float] = None,
                  max_risk_per_trade: Optional[float] = None,
-                 max_position_size: Optional[float] = None):
+                 max_position_size: Optional[float] = None,
+                 enable_ml: bool = False,
+                 enable_data_sources: bool = False):
         """
         Initialize the Profit Machine.
         
@@ -44,6 +46,8 @@ class ProfitMachine:
             portfolio_value: Starting portfolio value in USD (defaults to config)
             max_risk_per_trade: Maximum risk per trade (defaults to config)
             max_position_size: Maximum position size (defaults to config)
+            enable_ml: Enable ML components (optional, experimental)
+            enable_data_sources: Enable data source integrations (optional, experimental)
         """
         logger.info("=" * 60)
         logger.info("INITIALIZING MEGA DEFI PROFIT MACHINE")
@@ -66,6 +70,19 @@ class ProfitMachine:
         self.market_analyzer = MarketAnalyzer()
         self.risk_manager = RiskManager(max_risk_per_trade, max_position_size)
         self.profit_optimizer = ProfitOptimizer()
+        
+        # Optional: Initialize intelligence layer
+        self.intelligence_layer = None
+        if enable_ml or enable_data_sources:
+            try:
+                from .core.intelligence_layer import IntelligenceLayer
+                self.intelligence_layer = IntelligenceLayer(
+                    enable_ml=enable_ml,
+                    enable_data_sources=enable_data_sources
+                )
+                logger.info("🧠 Intelligence Layer activated (ML & Data Sources)")
+            except ImportError as e:
+                logger.warning(f"Could not initialize intelligence layer: {e}")
         
         self.risk_manager.update_portfolio(portfolio_value)
         
