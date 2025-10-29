@@ -45,7 +45,7 @@ Repository = "https://github.com/fxgeniusllc-oss/MEGA_-DEFI-"
 Issues = "https://github.com/fxgeniusllc-oss/MEGA_-DEFI-/issues"
 
 [tool.setuptools]
-packages = ["mega_defi", "mega_defi.core", "mega_defi.strategies", "mega_defi.ml", "mega_defi.data_sources"]
+packages = ["mega_defi", "mega_defi.core"]
 
 [tool.setuptools.package-data]
 mega_defi = ["py.typed"]
